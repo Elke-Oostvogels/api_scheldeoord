@@ -10,7 +10,7 @@ const ActiviteitSchema = new mongoose.Schema({
     type_activiteit: { type: mongoose.Schema.Types.ObjectId, ref: TypeActiviteit },
     locatie: { type: mongoose.Schema.Types.ObjectId, ref: Locaties },
     beschrijving: { type: String },
-    pers_limiet: { type: String },
+    pers_limiet: { type: Number },
     prijs: { type: Number }
 }, {
     collection: 'Activiteit'

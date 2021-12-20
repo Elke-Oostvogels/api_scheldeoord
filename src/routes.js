@@ -4,6 +4,7 @@ const router = express.Router();
 const Locatie = require('./models/locatie');
 const TypeActiviteit = require('./models/type_activiteit');
 const Activiteit = require('./models/activiteit');
+const Datum = require('./models/datum');
 
 
 router.get('/', (req, res) => {
@@ -35,6 +36,26 @@ router.get('/activiteit', async(req, res) => {
     console.log('/activiteit route called');
     try {
         res.json(await Activiteit.find());
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/datum', async(req, res) => {
+    console.log('/datum route called');
+    try {
+        res.json(await Datum.find().populate('activiteiten'));
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/activiteit/:id', async(req, res) => {
+    console.log('/activiteit/:id route called');
+    try {
+        res.json(await Activiteit.findById(req.params.id));
     } catch (e) {
         console.log(e);
         res.sendStatus(500);
