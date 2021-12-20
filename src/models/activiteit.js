@@ -3,6 +3,7 @@ const Locaties = require('./locatie');
 const TypeActiviteit = require('./type_activiteit');
 
 const ActiviteitSchema = new mongoose.Schema({
+    id: { type: String },
     naam: { type: String },
     begin_tijd: { type: Date },
     eind_tijd: { type: Date },
