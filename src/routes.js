@@ -45,7 +45,7 @@ router.get('/activiteit', async(req, res) => {
 router.get('/datum', async(req, res) => {
     console.log('/datum route called');
     try {
-        res.json(await Datum.find().populate('activiteiten'));
+        res.json(await Datum.find().populate('activiteiten').sort('datum'));
     } catch (e) {
         console.log(e);
         res.sendStatus(500);
